@@ -1,3 +1,4 @@
+import os
 import random
 import streamlit as st
 
@@ -7,6 +8,27 @@ from logic_utils import (
     parse_guess,
     update_score,
 )
+
+HIGH_SCORE_FILE = "high_score.txt"
+
+
+def load_high_score():
+    if not os.path.exists(HIGH_SCORE_FILE):
+        return 0
+    try:
+        with open(HIGH_SCORE_FILE, "r", encoding="utf-8") as f:
+            value = int(f.read().strip() or 0)
+            return max(value, 0)
+    except Exception:
+        return 0
+
+
+def save_high_score(score: int):
+    try:
+        with open(HIGH_SCORE_FILE, "w", encoding="utf-8") as f:
+            f.write(str(score))
+    except Exception:
+        pass
 
 st.set_page_config(page_title="Glitchy Guesser", page_icon="🎮")
 
@@ -32,6 +54,7 @@ low, high = get_range_for_difficulty(difficulty)
 
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
+st.sidebar.caption(f"High Score: {st.session_state.get('high_score', 0)}")
 
 if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
@@ -48,6 +71,9 @@ if "status" not in st.session_state:
 
 if "history" not in st.session_state:
     st.session_state.history = []
+
+if "high_score" not in st.session_state:
+    st.session_state.high_score = load_high_score()
 
 st.subheader("Make a guess")
 
@@ -119,9 +145,14 @@ if submit:
         if outcome == "Win":
             st.balloons()
             st.session_state.status = "won"
+            if st.session_state.score > st.session_state.high_score:
+                st.session_state.high_score = st.session_state.score
+                save_high_score(st.session_state.high_score)
+                st.success("🎉 New high score! Saved to disk.")
             st.success(
                 f"You won! The secret was {st.session_state.secret}. "
-                f"Final score: {st.session_state.score}"
+                f"Final score: {st.session_state.score} "
+                f"(High score: {st.session_state.high_score})"
             )
         else:
             if st.session_state.attempts >= attempt_limit:
@@ -134,3 +165,6 @@ if submit:
 
 st.divider()
 st.caption("Built by an AI that claims this code is production-ready.")
+
+# FEATURE: High Score tracker added via Copilot agent collaboration.
+# It saves best score to a local file and displays it in the sidebar.
