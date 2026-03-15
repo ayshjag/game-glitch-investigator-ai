@@ -42,15 +42,18 @@ $ pytest -q
 ```
 
 - Screenshot of enhanced UI:
-   <img src=" https://github.com/ayshjag/ai110-module1show-gameglitchinvestigator-starter/blob/main/final_game.gif" width=250><br>
+  <br>
+   <img src="https://github.com/ayshjag/ai110-module1show-gameglitchinvestigator-starter/blob/main/final_game.gif" width=250><br>
 
 ## Agent Contribution
 - This feature expansion was planned and implemented with Copilot (agent mode) guidance: I asked for a meaningful new feature and then added high-score load/save logic in `app.py`, with comments noting agent collaboration.
 
 ## 🚀 Stretch Features
 - [x] challenge 1:
+<br>
    <img src="https://github.com/ayshjag/ai110-module1show-gameglitchinvestigator-starter/blob/main/test.png" width=250><br>
 
 - [x] challenge 4:
-      <img src=" https://github.com/ayshjag/ai110-module1show-gameglitchinvestigator-starter/blob/main/final_game.gif" width=250><br>
+<br>
+      <img src="https://github.com/ayshjag/ai110-module1show-gameglitchinvestigator-starter/blob/main/final_game.gif" width=250><br>
   
