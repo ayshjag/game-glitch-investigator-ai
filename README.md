@@ -41,15 +41,15 @@ $ pytest -q
 21 passed
 ```
 
-- Screenshot of enhanced UI (paste image link or path):
-  ![Game UI](screenshots/game_ui.png)
+- Screenshot of enhanced UI:
+  (https://github.com/ayshjag/ai110-module1show-gameglitchinvestigator-starter/blob/main/final_game.gif)
 
 ## Agent Contribution
 - This feature expansion was planned and implemented with Copilot (agent mode) guidance: I asked for a meaningful new feature and then added high-score load/save logic in `app.py`, with comments noting agent collaboration.
 
 ## 🚀 Stretch Features
-  [x] challenge 1:
+- [x] challenge 1:
   
 
 - [x] challenge 4:
-
+   https://github.com/ayshjag/ai110-module1show-gameglitchinvestigator-starter/blob/main/final_game.gif
