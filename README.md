@@ -35,6 +35,7 @@ This game is a Streamlit number guessing game where players try to guess a secre
 - Added enhanced UI: color-coded hints, hot/cold emojis, and a player session summary table.
 - Test output:
 
+
 ```
 $ pytest -q
 21 passed
@@ -47,5 +48,8 @@ $ pytest -q
 - This feature expansion was planned and implemented with Copilot (agent mode) guidance: I asked for a meaningful new feature and then added high-score load/save logic in `app.py`, with comments noting agent collaboration.
 
 ## 🚀 Stretch Features
+  [x] challenge 1:
+  
 
-- [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+- [x] challenge 4:
+
