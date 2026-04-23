@@ -1,0 +1,8 @@
+STRATEGY: Managing Attempts and Scoring
+Each difficulty has a limited number of attempts: Easy=6, Normal=8, Hard=5.
+Winning early (fewer attempts) gives a higher score: score = 100 - 10 * attempts, minimum 10.
+With few attempts left, prioritize binary search over hot/cold refinement.
+Never waste an attempt on a guess outside the known valid range.
+If attempts are running low (1-2 remaining), pick the mathematical midpoint of the remaining range.
+Score management: winning on attempt 1 = 90 points, attempt 5 = 50 points, attempt 9+ = 10 points.
+Always track the narrowed range after each guess, not the original full range.

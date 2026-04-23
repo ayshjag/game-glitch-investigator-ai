@@ -1,0 +1,8 @@
+STRATEGY: Using Hot/Cold Feedback
+When the game provides hot/cold feedback, use it to narrow the range faster.
+"Hot" (distance <= 3): The secret is very close to your last guess. Adjust by 1-3.
+"Warm" (distance <= 10): You are in the right neighborhood. Adjust by 5-8.
+"Cold" (distance > 10): You are far off. Make a larger jump, use binary search midpoint.
+Hot feedback means the secret is within 3 of your last guess — try guessing +1, -1, +2, or -2.
+Warm feedback means you should stay in the same region but probe more precisely.
+Cold feedback means abandon the current region and jump to the midpoint of the unexplored range.

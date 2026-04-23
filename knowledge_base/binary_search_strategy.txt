@@ -1,0 +1,8 @@
+STRATEGY: Binary Search (Optimal)
+The most efficient strategy for a number guessing game is binary search.
+Always guess the midpoint of the remaining valid range.
+If the answer is "too high", the new range is [low, guess-1].
+If the answer is "too low", the new range is [guess+1, high].
+This halves the search space each turn, guaranteeing a win in at most log2(range_size) guesses.
+Example: range 1-100, guess 50. Too high? New range 1-49, next guess 25.
+Binary search is always optimal when you have no other information.
