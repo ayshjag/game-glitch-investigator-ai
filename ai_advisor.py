@@ -12,18 +12,23 @@ Pipeline
 
 from __future__ import annotations
 
-import os
+import json
 import logging
+import os
 from pathlib import Path
 from typing import Optional
 
-import google.generativeai as genai
+import requests
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
 KNOWLEDGE_BASE_DIR = Path(__file__).parent / "knowledge_base"
-GEMINI_MODEL = "gemini-1.5-flash"
+GEMINI_MODEL = "gemini-2.0-flash-lite"
+GEMINI_URL = (
+    "https://generativelanguage.googleapis.com/v1beta/models/"
+    "{model}:generateContent?key={api_key}"
+)
 
 
 # ---------------------------------------------------------------------------
@@ -189,13 +194,15 @@ EXPLANATION: <one or two sentences explaining why this is the best guess>
 
 Do not include any other text."""
 
-    # --- Step 5: call Gemini ---
+    # --- Step 5: call Gemini via REST API ---
     try:
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel(GEMINI_MODEL)
+        url = GEMINI_URL.format(model=GEMINI_MODEL, api_key=api_key)
+        payload = {"contents": [{"parts": [{"text": prompt}]}]}
         logger.info("Calling Gemini API for hint (range [%d, %d])", low, high)
-        response = model.generate_content(prompt)
-        raw_text = response.text.strip()
+        resp = requests.post(url, json=payload, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+        raw_text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
         logger.info("Gemini raw response: %s", raw_text)
     except Exception as exc:
         result["error"] = f"Gemini API error: {exc}"
