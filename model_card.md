@@ -4,7 +4,7 @@
 
 | Field | Value |
 |---|---|
-| Model used | Google Gemini 1.5 Flash |
+| Model used | Google Gemini 2.0 Flash Lite |
 | Provider | Google AI Studio (free tier) |
 | Integration | `google-generativeai` Python SDK |
 | Task | Game strategy advisor — recommend optimal next guess in a number guessing game |

@@ -160,4 +160,4 @@ This project taught me that a reliable AI system is built in layers: the LLM is 
 ## with AI Advisor
 ![Game Demo](ai_startegy_Advisor.gif)
 
-> 📹 Loom walkthrough: *[add your Loom link here]*
+
